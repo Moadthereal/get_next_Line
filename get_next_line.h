@@ -6,14 +6,16 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:34:56 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/19 12:16:43 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/20 07:40:22 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GETNEXTLINE_H
 # define FT_GETNEXTLINE_H
 
+#ifndef BUFFER_SIZE
 # define BUFFER_SIZE 2 
+#endif
 
 
 #include <stdlib.h>

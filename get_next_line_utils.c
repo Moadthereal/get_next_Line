@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 09:51:46 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/19 12:16:23 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/20 07:36:12 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,17 @@ int has_newLine(char  *stash)
 	}
 	return (0);
 }
-// stash = "hello\nwo" --> "hello\n" "world"
+// h e l l o \n w o r l \0
+//
 char    *extract_line(char *stash)
 {
 	int	i;
 	int newLine;
 	char	*line;
+	int k;
 
+	if ( NULL == stash )
+		return (NULL);
 	i = 0;
 	while (stash[i] && stash[i] != '\n' )
 		i++;
@@ -46,8 +50,9 @@ char    *extract_line(char *stash)
 	if (NULL == line)
 		return (NULL);
 	i = 0;
+	k = 0;
 	while (stash[i] && stash[i] != '\n')
-		line[i++] = *stash++;
+		line[i++] = stash[k++];
 	if (newLine == 2)
 		line[i++] = '\n';
 	line[i] = '\0';
@@ -59,26 +64,27 @@ char    *extract_reminder(char *stash)
 {
 	int	i;
 	int	j;
-	int 	k;
 	char	*reminder;
 
+	if (NULL == stash)
+		return (NULL);
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
+	if (stash[i] == '\0')
+		return (free(stash), NULL);
+	i++;
 	j = 0;
-	i = i + 1;
-	k = i;
-	while (stash[i++])
+	while (stash[i + j])
 		j++;
 	reminder = malloc(j + 1);
 	if (NULL == reminder)
-		return (NULL);
-	
-	i = 0;
-	while (stash[k]) 
-		reminder[i++] = stash[k++];
-	reminder[i] = '\0';
-	return (reminder); 
+		return (free(stash), NULL);
+	j = 0;
+	while (stash[i]) 
+		reminder[j++] = stash[i++];
+	reminder[j] = '\0';
+	return (free (stash), reminder); 
 }
 
 char	*ft_strdup(char *str)
@@ -117,8 +123,6 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s1 && s2)
 		return (ft_strdup(s2));
-	else if (s1 && !s2)
-		return (ft_strdup(s1));
 	else if (!s1 && !s2)
 		return (NULL);
 	join = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
@@ -131,6 +135,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	while (s2[i])
 		join[j++] = s2[i++];
+	free(s1);
 	join[j] = '\0';
 	return (join);
 }

@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:35:09 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/19 12:05:59 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/20 07:32:47 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,18 @@
 	stash = "\n" -->"\n" NULL
 */
 
+char *free_all(char **stash, char *buffer)
+{
+	free(buffer);
+	free(*stash);
+	*stash = NULL;
+	return (NULL);
+}
 char *get_next_line(int fd)
 {
 	static char	*stash = NULL;
 	char	*buffer;
 	char	*line;
-	char	*tmp;
 	int	bytes_read;
 
 	buffer = malloc((size_t)(BUFFER_SIZE) + 1);
@@ -33,7 +39,7 @@ char *get_next_line(int fd)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
-			return(free(buffer), NULL) ;
+			return(free_all(&stash, buffer)) ;
 		else if (bytes_read == 0)
 			break;
 		buffer[bytes_read] = '\0';
@@ -41,9 +47,27 @@ char *get_next_line(int fd)
 		if (NULL == stash)
 			return (free(buffer), NULL);
 	}
-	tmp = stash;
 	line = extract_line(stash);
 	stash = extract_reminder(stash);
-	free(tmp);
-	return (line);
+	return (free(buffer), line);
 }
+
+/*
+                  read()
+                   |
+          +--------+--------+
+          |        |        |
+        > 0       -1       0
+          |        |        |
+       append    error     EOF
+          |                 |
+          |          +------+------+
+          |          |             |
+       continue   stash == NULL  stash != NULL
+                         |             |
+                       NULL          break
+                                       |
+                                  extract line
+                                       |
+                                  return last line
+*/
