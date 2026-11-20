@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:34:56 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/20 09:38:15 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/20 10:48:52 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h> // just for testig
 
 char	*get_next_line(int fd);
 int		has_newline(char *stash);

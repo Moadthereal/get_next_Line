@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:35:09 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/20 09:19:32 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/20 11:10:39 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,16 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			bytes_read;
 
-	if (fd < 0)
+	bytes_read = read(fd, buffer, 0);
+	if (fd < 0 || BUFFER_SIZE <= 0 || bytes_read < 0)
 		return (NULL);
 	buffer = malloc((size_t)(BUFFER_SIZE) + 1);
 	if (NULL == buffer)
 		return (NULL);
-	while (!(has_newLine(stash)))
+	while (!(has_newline(stash)))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
+		if (bytes_read == -1 )
 			return (free_all(&stash, buffer));
 		else if (bytes_read == 0)
 			break ;
