@@ -6,64 +6,45 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 09:51:46 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/20 07:36:12 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/20 09:19:42 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int has_newLine(char  *stash)
+char	*extract_line(char *stash)
 {
-	int	i;
+	char	*line;
+	int		i;
+	int		newline;
+	int		k;
 
 	if (NULL == stash)
-		return (0);
-
-	i = 0;
-	while (stash[i]) 
-	{
-		if (stash[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-// h e l l o \n w o r l \0
-//
-char    *extract_line(char *stash)
-{
-	int	i;
-	int newLine;
-	char	*line;
-	int k;
-
-	if ( NULL == stash )
 		return (NULL);
 	i = 0;
 	while (stash[i] && stash[i] != '\n' )
 		i++;
 	if (stash[i] == '\n')
-		newLine = 2;
-	else 
-		newLine = 1;
-	line = malloc(i + newLine);
+		newline = 2;
+	else
+		newline = 1;
+	line = malloc(i + newline);
 	if (NULL == line)
 		return (NULL);
 	i = 0;
 	k = 0;
 	while (stash[i] && stash[i] != '\n')
 		line[i++] = stash[k++];
-	if (newLine == 2)
+	if (newline == 2)
 		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
 
-// stash = "hello\nwo" --> "hello\n" "world"
-char    *extract_reminder(char *stash)
+char	*extract_reminder(char *stash)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*reminder;
 
 	if (NULL == stash)
@@ -71,7 +52,7 @@ char    *extract_reminder(char *stash)
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	if (stash[i] == '\0')
+	if (stash[i] == '\0' || stash[i + 1] == '\0' )
 		return (free(stash), NULL);
 	i++;
 	j = 0;
@@ -81,15 +62,15 @@ char    *extract_reminder(char *stash)
 	if (NULL == reminder)
 		return (free(stash), NULL);
 	j = 0;
-	while (stash[i]) 
+	while (stash[i])
 		reminder[j++] = stash[i++];
 	reminder[j] = '\0';
-	return (free (stash), reminder); 
+	return (free (stash), reminder);
 }
 
 char	*ft_strdup(char *str)
 {
-	int	i;
+	int		i;
 	char	*dup;
 
 	i = 0;
@@ -105,9 +86,9 @@ char	*ft_strdup(char *str)
 	return (dup);
 }
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -118,8 +99,8 @@ int ft_strlen(char *str)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*join;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	if (!s1 && s2)
 		return (ft_strdup(s2));
