@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:35:09 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/20 18:32:40 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/23 09:32:22 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,28 @@ int	has_newline(char *stash)
 	return (0);
 }
 
+int	ft_tcheck_fd(int fd)
+{
+	char	*buffer;
+	int		read_bytes;
+
+	buffer = malloc(((size_t)BUFFER_SIZE) + 1);
+	if (NULL == buffer)
+		return (1);
+	read_bytes = read(fd, buffer, 0);
+	if (read_bytes == -1)
+	{
+		free(buffer);
+		return (1);
+	}
+	else
+	{
+		free(buffer);
+		return (0);
+	}
+}
+
+// hello\nworld\n
 char	*get_next_line(int fd)
 {
 	static char	*stash;
@@ -43,15 +65,15 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0 || ft_tcheck_fd(fd))
+		return (free(stash), NULL);
 	buffer = malloc((size_t)(BUFFER_SIZE) + 1);
 	if (NULL == buffer)
 		return (NULL);
 	while (!(has_newline(stash)))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1 )
+		if (bytes_read == -1)
 			return (free_all(&stash, buffer));
 		else if (bytes_read == 0)
 			break ;

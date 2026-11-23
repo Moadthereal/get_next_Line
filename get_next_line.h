@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:34:56 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/20 10:48:52 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/22 09:54:55 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 24
+#  define BUFFER_SIZE 10
 # endif
 
 # include <stdlib.h>
