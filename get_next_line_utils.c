@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 09:51:46 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/23 09:21:07 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/24 16:00:59 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char	*ft_strdup(char *str)
 	int		i;
 	char	*dup;
 
+	if (NULL == str)
+		return (NULL);
 	i = 0;
 	while (str[i])
 		i++;
@@ -90,6 +92,8 @@ int	ft_strlen(char *str)
 {
 	int	i;
 
+	if (NULL == str)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
@@ -104,6 +108,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s1 && s2)
 		return (ft_strdup(s2));
+	else if (!s2)
+		return (NULL);
 	else if (!s1 && !s2)
 		return (NULL);
 	join = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);

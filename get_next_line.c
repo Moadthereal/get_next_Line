@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:35:09 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/23 09:32:22 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/23 18:50:29 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	ft_tcheck_fd(int fd)
 	}
 }
 
-// hello\nworld\n
 char	*get_next_line(int fd)
 {
 	static char	*stash;

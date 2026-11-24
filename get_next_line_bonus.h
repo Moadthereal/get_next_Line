@@ -6,20 +6,18 @@
 /*   By: majnaou <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 07:59:37 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/23 09:33:38 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/24 15:38:30 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
-# ifndef SIZE 
-#  define SIZE 1024 
-# endif
+# define OPEN_MAX 1024
 
 # include <stdlib.h>
 # include <unistd.h>

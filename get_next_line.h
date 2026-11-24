@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:34:56 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/22 09:54:55 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/23 15:49:43 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 42 
 # endif
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h> // just for testig
 
 char	*get_next_line(int fd);
 int		has_newline(char *stash);

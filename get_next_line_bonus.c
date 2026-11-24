@@ -6,7 +6,7 @@
 /*   By: majnaou <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 07:55:15 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/23 09:34:39 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/24 10:26:49 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_tcheck_fd(int fd)
 char	*get_next_line(int fd)
 {
 	char		*buffer;
-	static char	*stash[SIZE];
+	static char	*stash[OPEN_MAX];
 	char		*line;
 	int			read_bytes;
 
