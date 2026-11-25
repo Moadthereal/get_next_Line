@@ -16,6 +16,8 @@ for mendatory part :
     - add this to your main.c file : #include "get_next_line.h"
     - cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -o program
     - ./program
+    - to test with different buffer size use this :
+        -  -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c
 for bonus part :
     - add this to your main.c file : #include "get_next_line_bonus.h"
     - cc -Wall -Wextra -Werror main.c get_next_line_bonus.c get_next_line_utils_bonus -o program

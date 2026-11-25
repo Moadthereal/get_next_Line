@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:34:56 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/23 15:49:43 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/25 08:47:12 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd);
 int		has_newline(char *stash);
+int		ft_tcheck_fd(int fd);
+int		ft_strlen(char *str);
+char	*get_next_line(int fd);
 char	*extract_line(char *stash);
 char	*extract_reminder(char *stash);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
+char	*free_stash(char **stash);
+char	*free_all(char **stash, char *buffer);
 
 #endif

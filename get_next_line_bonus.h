@@ -6,7 +6,7 @@
 /*   By: majnaou <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 07:59:37 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/24 15:38:30 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/25 08:46:39 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# define OPEN_MAX 1024
-
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd);
 int		has_newline(char *stash);
+int		ft_tcheck_fd(int fd);
+int		ft_strlen(char *str);
+char	*get_next_line(int fd);
 char	*extract_line(char *stash);
 char	*extract_reminder(char *stash);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
+char	*free_stash(char **stash);
+char	*free_all(char **stash, char *buffer);
 
 #endif

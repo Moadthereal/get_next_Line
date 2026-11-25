@@ -6,7 +6,7 @@
 /*   By: majnaou <majnaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 10:35:09 by majnaou           #+#    #+#             */
-/*   Updated: 2026/11/23 18:50:29 by majnaou          ###   ########.fr       */
+/*   Updated: 2026/11/25 08:29:34 by majnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ int	ft_tcheck_fd(int fd)
 	}
 }
 
+char	*free_stash(char **stash)
+{
+	free(*stash);
+	*stash = NULL;
+	return (NULL);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*stash;
@@ -65,7 +72,7 @@ char	*get_next_line(int fd)
 	int			bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || ft_tcheck_fd(fd))
-		return (free(stash), NULL);
+		return (free_stash(&stash));
 	buffer = malloc((size_t)(BUFFER_SIZE) + 1);
 	if (NULL == buffer)
 		return (NULL);
